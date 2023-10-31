@@ -1,0 +1,25 @@
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: advance-cluster-management
+  namespace: openshift-gitops
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: advance-cluster-management-{{name}}
+    spec:
+      project: advance-cluster-management
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/ignaciolago/acs-gitops.git
+        targetRevision: acm-acs-eks
+        path: resources/rhacm
+      destination:
+        server: https://kubernetes.default.svc
