@@ -18,8 +18,8 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/ignaciolago/acs-gitops.git
-        targetRevision: acm-acs-eks
-        path: resources/rhacm
+        repoURL: https://github.com/Everything-is-Code/advance-cluster-management.git
+        targetRevision: main
+        path: resources/
       destination:
         server: https://kubernetes.default.svc
