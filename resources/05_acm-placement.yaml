@@ -15,3 +15,4 @@ spec:
           operator: "In"
           values:
           - OpenShift
+          - EKS
