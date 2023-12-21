@@ -1,0 +1,17 @@
+---
+apiVersion: apps.open-cluster-management.io/v1beta1
+kind: GitOpsCluster
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+  name: {{ .Values.metadata.argocd.clusterSet }}
+  namespace: {{ .Values.metadata.argocd.cluster }}
+spec:
+  argoServer:
+    cluster: {{ .Values.metadata.argocd.cluster }}
+    argoNamespace: {{ .Values.metadata.argocd.namespace }}
+  placementRef:
+    kind: Placement
+    apiVersion: cluster.open-cluster-management.io/v1beta1
+    name: {{ .Values.metadata.argocd.clusterSet }}
+    namespace: {{ .Values.metadata.argocd.namespace }}

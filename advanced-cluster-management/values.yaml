@@ -1,0 +1,23 @@
+# Default values for advanced-cluster-management.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+metadata:
+  ocm:
+    name: open-cluster-management
+    namespace: open-cluster-management
+  mch:
+    name: multiclusterhub
+    namespace: open-cluster-management
+  argocd: 
+    name: openshift-gitops
+    namespace: openshift-gitops
+    clusterSet: gitops-clusters
+    cluster: local-cluster
+channel: release-2.9
+installPlanApproval: Automatic
+requiredClusterSelector: 
+  matchExpressions:
+    key: vendor
+    operator: "In"
+    values: OpenShift

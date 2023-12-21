@@ -1,0 +1,16 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Placement
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  name: {{ .Values.metadata.argocd.clusterSet }}
+  namespace: {{ .Values.metadata.argocd.namespace }}
+spec:
+  predicates:
+  - requiredClusterSelector:
+      labelSelector:
+        matchExpressions:
+        - key: {{ .Values.requiredClusterSelector.matchExpressions.key }}
+          operator: {{ .Values.requiredClusterSelector.matchExpressions.operator }}
+          values: {{ .Values.requiredClusterSelector.matchExpressions.values }}
